@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/triviagame_navigation"
+    app:startDestination="@id/gameStartFragment">
+
+    <fragment
+        android:id="@+id/gameStartFragment"
+        android:name="com.example.triviagame.GameStartFragment"
+        android:label="fragment_game_start"
+        tools:layout="@layout/fragment_game_start" >
+        <action
+            android:id="@+id/landing_to_game_start"
+            app:destination="@id/gamePlayFragment" />
+        <action
+            android:id="@+id/landing_to_highScore"
+            app:destination="@id/highScoreFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gamePlayFragment"
+        android:name="com.example.triviagame.GamePlayFragment"
+        android:label="fragment_game_play"
+        tools:layout="@layout/fragment_game_play" >
+        <action
+            android:id="@+id/gameStart_to_landing"
+            app:destination="@id/gameStartFragment" />
+        <argument
+            android:name="usernamePlay"
+            app:argType="string" />
+        <action
+            android:id="@+id/gamePlay_to_gameEnd"
+            app:destination="@id/gameEndFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/highScoreFragment"
+        android:name="com.example.triviagame.HighScoreFragment"
+        android:label="fragment_high_score"
+        tools:layout="@layout/fragment_high_score" />
+    <fragment
+        android:id="@+id/gameEndFragment"
+        android:name="com.example.triviagame.GameEndFragment"
+        android:label="fragment_game_end"
+        tools:layout="@layout/fragment_game_end" >
+        <action
+            android:id="@+id/gameEnd_to_landing"
+            app:destination="@id/gameStartFragment" />
+        <action
+            android:id="@+id/gameEnd_to_gamePlay"
+            app:destination="@id/gamePlayFragment" />
+        <argument
+            android:name="usernameEnd"
+            app:argType="string" />
+        <argument
+            android:name="scoreEnd"
+            app:argType="integer" />
+    </fragment>
+</navigation>
